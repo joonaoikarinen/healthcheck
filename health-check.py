@@ -8,7 +8,7 @@ import requests
 url = 'https://example-service.f-secure.com/health:443'
 
 try:
-    r = requests.head(url, timeout=5)
+    r = requests.get(url, timeout=5)
     # Succeed, print 0 and exit with status 0
     if r.status_code == 200:
         print('0')
