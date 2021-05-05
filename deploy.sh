@@ -18,6 +18,7 @@ cp "$DEPLOY_DIR"/health-check.py "$TARGET_DIR"
 chmod +x "$TARGET_DIR"health-check.py
 
 # Create cronjob, execute in 10 minute loop
-(crontab -l; echo "*/10 * * * * ""$TARGET_DIR""health-check.py")|crontab -
+CRON_CMD="*/10 * * * * ""$TARGET_DIR""health-check.py"
+(crontab -l|grep -v -F "$CRON_CMD"; echo "$CRON_CMD")|crontab -
 
 exit 0
